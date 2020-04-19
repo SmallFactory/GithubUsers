@@ -42,6 +42,7 @@
 		267CA51A244BE8A0007AB8A0 /* RepoItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA518244BE8A0007AB8A0 /* RepoItemController.swift */; };
 		267CA51B244BE8A0007AB8A0 /* FollowerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA519244BE8A0007AB8A0 /* FollowerListController.swift */; };
 		267CA51D244C04B1007AB8A0 /* TabBarControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA51C244C04B1007AB8A0 /* TabBarControllers.swift */; };
+		267CA51F244C1131007AB8A0 /* SFSAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA51E244C1131007AB8A0 /* SFSAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		267CA518244BE8A0007AB8A0 /* RepoItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoItemController.swift; sourceTree = "<group>"; };
 		267CA519244BE8A0007AB8A0 /* FollowerListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerListController.swift; sourceTree = "<group>"; };
 		267CA51C244C04B1007AB8A0 /* TabBarControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllers.swift; sourceTree = "<group>"; };
+		267CA51E244C1131007AB8A0 /* SFSAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 				267CA512244BE453007AB8A0 /* SFSSecondaryTitleLabel.swift */,
 				267CA511244BE453007AB8A0 /* SFSTextField.swift */,
 				267CA510244BE453007AB8A0 /* SFSTitleLabel.swift */,
+				267CA51E244C1131007AB8A0 /* SFSAlertContainerView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				267CA4ED244BE1C5007AB8A0 /* UserInfoController.swift in Sources */,
 				267CA50D244BE447007AB8A0 /* ItemInfoView.swift in Sources */,
 				267CA51A244BE8A0007AB8A0 /* RepoItemController.swift in Sources */,
+				267CA51F244C1131007AB8A0 /* SFSAlertContainerView.swift in Sources */,
 				267CA4EF244BE1D8007AB8A0 /* SFSAlertController.swift in Sources */,
 				267CA4F7244BE3CC007AB8A0 /* PersistenceManager.swift in Sources */,
 				267CA4E1244BE107007AB8A0 /* SceneDelegate.swift in Sources */,

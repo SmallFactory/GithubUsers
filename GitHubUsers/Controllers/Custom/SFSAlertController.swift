@@ -10,7 +10,7 @@ import UIKit
 
 class SFSAlertController: UIViewController {
 
-	let containerView = UIView()
+	let containerView = SFSAlertContainerView()
 	let titleLabel = SFSTitleLabel(textAlign: .center, fontSize: 20)
 	let messageLabel = SFSBodyLabel(textAlign: .center)
 	let actionButton = SFSButton(backgroundColor: .systemPink, title: "Ok")
@@ -41,17 +41,12 @@ class SFSAlertController: UIViewController {
     }
 	
 	private func compose() {
-		view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.75)
+		view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
 		view.addSubview(containerView)
+		
 		containerView.addSubview(titleLabel)
 		containerView.addSubview(actionButton)
 		containerView.addSubview(messageLabel)
-		
-		containerView.backgroundColor = .systemBackground
-		containerView.layer.borderColor = UIColor.white.cgColor
-		containerView.layer.borderWidth = 2.0
-		containerView.layer.cornerRadius = 16
-		containerView.translatesAutoresizingMaskIntoConstraints = false
 		
 		titleLabel.text = alertTitle ?? "Something went wrong"
 		actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
