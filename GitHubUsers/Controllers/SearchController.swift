@@ -55,7 +55,7 @@ class SearchController: UIViewController {
 	private func compose() {
 		view.addSubview(logoImageView)
 		logoImageView.translatesAutoresizingMaskIntoConstraints = false
-		logoImageView.image = #imageLiteral(resourceName: "gh-logo")
+		logoImageView.image = Images.ghLogo
 		
 		view.addSubview(usernameTextField)
 		usernameTextField.delegate = self
