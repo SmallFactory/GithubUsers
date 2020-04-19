@@ -38,9 +38,5 @@ class SFSTextField: UITextField {
 		returnKeyType = .go
 		
 		placeholder = "Enter a username"
-		
-		#if DEBUG
-			text = "sallen0400"
-		#endif
 	}
 }
