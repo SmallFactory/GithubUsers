@@ -11,7 +11,7 @@ import Foundation
 struct User: Codable {
 	let avatarUrl: String
 	var bio: String?
-	let createdAt: String
+	let createdAt: Date
 	let following: Int
 	let followers: Int
 	let htmlUrl: String
