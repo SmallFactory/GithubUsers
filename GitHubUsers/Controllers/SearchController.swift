@@ -12,6 +12,7 @@ class SearchController: UIViewController {
 	
 	let callToActionButton = SFSButton(backgroundColor: .systemGreen, title: "Get Followers")
 	let logoImageView = UIImageView()
+	var logoImageViewTopConstraint: NSLayoutConstraint!
 	let usernameTextField = SFSTextField()
 	
 	var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
@@ -62,8 +63,11 @@ class SearchController: UIViewController {
 	}
 	
 	private func constrain() {
+		let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+		logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
+		logoImageViewTopConstraint.isActive = true
+		
 		NSLayoutConstraint.activate([
-			logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
 			logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			logoImageView.heightAnchor.constraint(equalToConstant: 200),
 			logoImageView.widthAnchor.constraint(equalToConstant: 200),
