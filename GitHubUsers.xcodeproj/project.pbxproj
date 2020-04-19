@@ -41,6 +41,7 @@
 		267CA517244BE453007AB8A0 /* SFSSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA512244BE453007AB8A0 /* SFSSecondaryTitleLabel.swift */; };
 		267CA51A244BE8A0007AB8A0 /* RepoItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA518244BE8A0007AB8A0 /* RepoItemController.swift */; };
 		267CA51B244BE8A0007AB8A0 /* FollowerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA519244BE8A0007AB8A0 /* FollowerListController.swift */; };
+		267CA51D244C04B1007AB8A0 /* TabBarControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA51C244C04B1007AB8A0 /* TabBarControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		267CA512244BE453007AB8A0 /* SFSSecondaryTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		267CA518244BE8A0007AB8A0 /* RepoItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoItemController.swift; sourceTree = "<group>"; };
 		267CA519244BE8A0007AB8A0 /* FollowerListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerListController.swift; sourceTree = "<group>"; };
+		267CA51C244C04B1007AB8A0 /* TabBarControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,11 +161,12 @@
 			isa = PBXGroup;
 			children = (
 				267CA504244BE447007AB8A0 /* AvatarImageView.swift */,
+				267CA4DC244BE05B007AB8A0 /* Custom */,
 				267CA505244BE447007AB8A0 /* EmptyStateView.swift */,
 				267CA507244BE447007AB8A0 /* FavoriteCell.swift */,
 				267CA506244BE447007AB8A0 /* FollowerCell.swift */,
 				267CA508244BE447007AB8A0 /* ItemInfoView.swift */,
-				267CA4DC244BE05B007AB8A0 /* Custom */,
+				267CA51C244C04B1007AB8A0 /* TabBarControllers.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				267CA4E1244BE107007AB8A0 /* SceneDelegate.swift in Sources */,
 				267CA514244BE453007AB8A0 /* SFSBodyLabel.swift in Sources */,
 				267CA4F5244BE201007AB8A0 /* String+Ext.swift in Sources */,
+				267CA51D244C04B1007AB8A0 /* TabBarControllers.swift in Sources */,
 				267CA516244BE453007AB8A0 /* SFSTextField.swift in Sources */,
 				267CA4F4244BE201007AB8A0 /* Date+Ext.swift in Sources */,
 				267CA4EC244BE1C5007AB8A0 /* FollowerItemController.swift in Sources */,
