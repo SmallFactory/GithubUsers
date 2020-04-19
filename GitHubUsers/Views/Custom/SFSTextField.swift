@@ -34,7 +34,9 @@ class SFSTextField: UITextField {
 		
 		autocorrectionType = .no
 		backgroundColor = .tertiarySystemBackground
+		clearButtonMode = .whileEditing
 		returnKeyType = .go
+		
 		placeholder = "Enter a username"
 		
 		#if DEBUG

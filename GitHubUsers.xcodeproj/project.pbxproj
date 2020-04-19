@@ -210,15 +210,15 @@
 		267CA4D7244BDFB3007AB8A0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				267CA519244BE8A0007AB8A0 /* FollowerListController.swift */,
-				267CA518244BE8A0007AB8A0 /* RepoItemController.swift */,
+				267CA4DB244BE053007AB8A0 /* Custom */,
+				267CA4E2244BE190007AB8A0 /* FavoritesController.swift */,
 				267CA4E7244BE1C5007AB8A0 /* FollowerItemController.swift */,
+				267CA519244BE8A0007AB8A0 /* FollowerListController.swift */,
 				267CA4E5244BE1C5007AB8A0 /* ItemInfoController.swift */,
+				267CA518244BE8A0007AB8A0 /* RepoItemController.swift */,
 				267CA4E4244BE1C5007AB8A0 /* SearchController.swift */,
 				267CA4E8244BE1C5007AB8A0 /* UserInfoController.swift */,
 				267CA4E6244BE1C5007AB8A0 /* UserInfoHeaderController.swift */,
-				267CA4E2244BE190007AB8A0 /* FavoritesController.swift */,
-				267CA4DB244BE053007AB8A0 /* Custom */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
