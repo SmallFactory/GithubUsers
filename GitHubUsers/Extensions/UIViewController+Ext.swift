@@ -6,8 +6,8 @@
 //  Copyright © 2020 Small Factory Studios. All rights reserved.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
 extension UIViewController {
 	

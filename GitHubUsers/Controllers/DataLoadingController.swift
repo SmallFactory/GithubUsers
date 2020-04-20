@@ -16,6 +16,19 @@ class DataLoadingController: UIViewController {
         super.viewDidLoad()
 	}
 	
+	func dismissLoadingView() {
+		DispatchQueue.main.async {
+			self.containerView.removeFromSuperview()
+			self.containerView = nil
+		}
+	}
+	
+	func showEmptyStateView(with message: String, in view: UIView) {
+		let emptyStateView = EmptyStateView(message: message)
+		emptyStateView.frame = view.bounds
+		view.addSubview(emptyStateView)
+	}
+	
 	func showLoadingView() {
 		containerView = UIView(frame: view.bounds)
 		view.addSubview(containerView)
@@ -36,18 +49,5 @@ class DataLoadingController: UIViewController {
 			activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
 		])
 		activityIndicator.startAnimating()
-	}
-	
-	func dismissLoadingView() {
-		DispatchQueue.main.async {
-			self.containerView.removeFromSuperview()
-			self.containerView = nil
-		}
-	}
-	
-	func showEmptyStateView(with message: String, in view: UIView) {
-		let emptyStateView = EmptyStateView(message: message)
-		emptyStateView.frame = view.bounds
-		view.addSubview(emptyStateView)
 	}
 }

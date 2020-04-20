@@ -273,12 +273,12 @@
 		267CA4DC244BE05B007AB8A0 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				267CA51E244C1131007AB8A0 /* SFSAlertContainerView.swift */,
 				267CA50F244BE453007AB8A0 /* SFSBodyLabel.swift */,
 				267CA50E244BE453007AB8A0 /* SFSButton.swift */,
 				267CA512244BE453007AB8A0 /* SFSSecondaryTitleLabel.swift */,
 				267CA511244BE453007AB8A0 /* SFSTextField.swift */,
 				267CA510244BE453007AB8A0 /* SFSTitleLabel.swift */,
-				267CA51E244C1131007AB8A0 /* SFSAlertContainerView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";

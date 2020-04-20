@@ -17,13 +17,6 @@ class ItemInfoController: UIViewController {
 	
 	var user: User!
 	
-	override func viewDidLoad() {
-        super.viewDidLoad()
-
-		compose()
-		constrain()
-	}
-	
 	init(user: User) {
 		super.init(nibName: nil, bundle: nil)
 		self.user = user
@@ -31,6 +24,13 @@ class ItemInfoController: UIViewController {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	override func viewDidLoad() {
+        super.viewDidLoad()
+
+		compose()
+		constrain()
 	}
 	
 	private func compose() {

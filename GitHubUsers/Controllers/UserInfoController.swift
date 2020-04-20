@@ -130,8 +130,6 @@ extension UserInfoController: FollowerItemControllerDelegate {
 		delegate.didRequestFollowers(for: user.login)
 		dismissVC()
 	}
-	
-	
 }
 
 extension UserInfoController: RepoItemControllerDelegate {

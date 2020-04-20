@@ -17,6 +17,7 @@ class FollowerCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		
 		compose()
 		constrain()
 	}
@@ -30,13 +31,8 @@ class FollowerCell: UICollectionViewCell {
 	}
 	
 	func set(follower: Follower) {
+		avatarImageView.downloadImage(fromURL: follower.avatarUrl)
 		usernameLabel.text = follower.login
-		NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [weak self] image in
-			guard let self = self else { return }
-			DispatchQueue.main.async {
-				self.avatarImageView.image = image
-			}
-		}
 	}
 	
 	private func constrain() {

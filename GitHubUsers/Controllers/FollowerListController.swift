@@ -36,11 +36,17 @@ class FollowerListController: DataLoadingController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		configureSearchController()
 		configureViewController()
 		configureCollectionView()
 		getFollowers(username: username, page: page)
 		configureDataSource()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(false, animated: true)
 	}
 	
 	private func configureViewController() {
@@ -49,11 +55,6 @@ class FollowerListController: DataLoadingController {
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
 		navigationItem.rightBarButtonItem = addButton
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		navigationController?.setNavigationBarHidden(false, animated: true)
 	}
 	
 	private func configureCollectionView() {
@@ -86,20 +87,38 @@ class FollowerListController: DataLoadingController {
 				self.presentSFSAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
 			
 			case .success(let followers):
-				if followers.count < 100 { self.hasMoreFollowers = false }
-				self.followers.append(contentsOf: followers)
-				
-				if self.followers.isEmpty {
-					let message = "This user doesn't have any followers. Go follow them 😀."
-					DispatchQueue.main.async {
-						self.showEmptyStateView(with: message, in: self.view)
-						return
-					}
-				}
-				self.updateData(on: self.followers)
+				self.updateUI(with: followers)
 			}
 			
 			self.isLoadingMoreFollowers = false
+		}
+	}
+	
+	private func updateUI(with followers: [Follower]) {
+		if followers.count < 100 { self.hasMoreFollowers = false }
+		self.followers.append(contentsOf: followers)
+		
+		if followers.isEmpty {
+			let message = "This user doesn't have any followers. Go follow them 😀."
+			DispatchQueue.main.async {
+				self.showEmptyStateView(with: message, in: self.view)
+				return
+			}
+		}
+		self.updateData(on: followers)
+	}
+	
+	private func addUserToFavorites(user: User) {
+		let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+		PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+			guard let self = self else { return }
+			
+			guard let error = error else {
+				self.presentSFSAlertOnMainThread(title: "Success!", message: "You have successfully favorited this user!", buttonTitle: "Hooray")
+				return
+			}
+			
+			self.presentSFSAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Ok")
 		}
 	}
 	
@@ -141,17 +160,7 @@ class FollowerListController: DataLoadingController {
 			
 			switch result {
 			case .success(let user):
-				let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-				PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-					guard let self = self else { return }
-					
-					guard let error = error else {
-						self.presentSFSAlertOnMainThread(title: "Success!", message: "You have successfully favorited this user!", buttonTitle: "Hooray")
-						return
-					}
-					
-					self.presentSFSAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Ok")
-				}
+				self.addUserToFavorites(user: user)
 			case .failure(let error):
 				self.presentSFSAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
 			}
