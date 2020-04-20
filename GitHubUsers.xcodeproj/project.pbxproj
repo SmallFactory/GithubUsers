@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2660C79D244CEF5E009ECAC9 /* DataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2660C79C244CEF5E009ECAC9 /* DataLoadingController.swift */; };
 		2660C79F244D123A009ECAC9 /* UIVIew+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2660C79E244D123A009ECAC9 /* UIVIew+Ext.swift */; };
+		2660C7A2244D22A4009ECAC9 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2660C7A1244D22A4009ECAC9 /* UITableView+Ext.swift */; };
 		267CA4BA244BDF99007AB8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 267CA4B9244BDF99007AB8A0 /* Assets.xcassets */; };
 		267CA4BD244BDF99007AB8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 267CA4BB244BDF99007AB8A0 /* LaunchScreen.storyboard */; };
 		267CA4C8244BDF99007AB8A0 /* GitHubUsersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA4C7244BDF99007AB8A0 /* GitHubUsersTests.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		2660C79C244CEF5E009ECAC9 /* DataLoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingController.swift; sourceTree = "<group>"; };
 		2660C79E244D123A009ECAC9 /* UIVIew+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Ext.swift"; sourceTree = "<group>"; };
+		2660C7A1244D22A4009ECAC9 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		267CA4AD244BDF96007AB8A0 /* GitHubUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267CA4B9244BDF99007AB8A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		267CA4BC244BDF99007AB8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				267CA4F2244BE201007AB8A0 /* String+Ext.swift */,
 				267CA4F0244BE201007AB8A0 /* UIViewController+Ext.swift */,
 				2660C79E244D123A009ECAC9 /* UIVIew+Ext.swift */,
+				2660C7A1244D22A4009ECAC9 /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				267CA4F7244BE3CC007AB8A0 /* PersistenceManager.swift in Sources */,
 				267CA4E1244BE107007AB8A0 /* SceneDelegate.swift in Sources */,
 				267CA514244BE453007AB8A0 /* SFSBodyLabel.swift in Sources */,
+				2660C7A2244D22A4009ECAC9 /* UITableView+Ext.swift in Sources */,
 				267CA4F5244BE201007AB8A0 /* String+Ext.swift in Sources */,
 				267CA51D244C04B1007AB8A0 /* TabBarControllers.swift in Sources */,
 				267CA516244BE453007AB8A0 /* SFSTextField.swift in Sources */,
