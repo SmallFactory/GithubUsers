@@ -12,14 +12,12 @@ class SearchController: UIViewController {
 	
 	let callToActionButton = SFSButton(backgroundColor: .systemGreen, title: "Get Followers")
 	let logoImageView = UIImageView()
-	var logoImageViewTopConstraint: NSLayoutConstraint!
 	let usernameTextField = SFSTextField()
 	
 	var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .systemBackground
 		
 		compose()
 		constrain()
@@ -53,23 +51,19 @@ class SearchController: UIViewController {
 	}
 	
 	private func compose() {
-		view.addSubview(logoImageView)
+		view.backgroundColor = .systemBackground
+		view.addSubviews(logoImageView, usernameTextField, callToActionButton)
 		logoImageView.translatesAutoresizingMaskIntoConstraints = false
-		logoImageView.image = #imageLiteral(resourceName: "gh-logo")
-		
-		view.addSubview(usernameTextField)
+		logoImageView.image = Images.ghLogo
 		usernameTextField.delegate = self
-		
-		view.addSubview(callToActionButton)
 		callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
 	}
 	
 	private func constrain() {
 		let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
-		logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
-		logoImageViewTopConstraint.isActive = true
 		
 		NSLayoutConstraint.activate([
+			logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),
 			logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			logoImageView.heightAnchor.constraint(equalToConstant: 200),
 			logoImageView.widthAnchor.constraint(equalToConstant: 200),

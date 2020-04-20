@@ -26,6 +26,7 @@ class SFSBodyLabel: UILabel {
 	
 	private func configure() {
 		adjustsFontSizeToFitWidth = true
+		adjustsFontForContentSizeCategory = true
 		font = UIFont.preferredFont(forTextStyle: .body)
 		lineBreakMode = .byWordWrapping
 		minimumScaleFactor = 0.75

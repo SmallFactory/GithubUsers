@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesController: UIViewController {
+class FavoritesController: DataLoadingController {
 	
 	let tableView = UITableView()
 	var favorites: [Follower] = []
@@ -34,6 +34,7 @@ class FavoritesController: UIViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.resuseID)
+		tableView.removeExcessCells()
 		view.addSubview(tableView)
 	}
 	
@@ -48,17 +49,21 @@ class FavoritesController: UIViewController {
 			
 			switch result {
 			case .success(let favorites):
-				if favorites.isEmpty {
-					self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
-				} else {
-					self.favorites = favorites
-					DispatchQueue.main.async {
-						self.tableView.reloadData()
-						self.view.bringSubviewToFront(self.tableView)
-					}
-				}
+				self.updateUI(with: favorites)
 			case .failure(let error):
 				self.presentSFSAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Ok")
+			}
+		}
+	}
+	
+	private func updateUI(with favorites: [Follower]) {
+		if favorites.isEmpty {
+			self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
+		} else {
+			self.favorites = favorites
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+				self.view.bringSubviewToFront(self.tableView)
 			}
 		}
 	}
@@ -90,15 +95,13 @@ extension FavoritesController: UITableViewDataSource, UITableViewDelegate {
 			return
 		}
 		
-		let favorite = favorites[indexPath.row]
-		favorites.remove(at: indexPath.row)
-		tableView.deleteRows(at: [indexPath], with: .left)
-		
-		PersistenceManager.updateWith(favorite: favorite, actionType: .remove) { [weak self] error in
+		PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
 			guard let self = self else { return }
-			
-			guard let error = error else { return }
-			
+			guard let error = error else {
+				self.favorites.remove(at: indexPath.row)
+				tableView.deleteRows(at: [indexPath], with: .left)
+				return
+			}
 			self.presentSFSAlertOnMainThread(title: "Unable to remove.", message: error.rawValue, buttonTitle: "Ok")
 		}
 	}

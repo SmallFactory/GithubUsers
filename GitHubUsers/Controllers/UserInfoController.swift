@@ -9,21 +9,22 @@
 import UIKit
 
 protocol UserInfoControllerDelegate: class {
-	func didTapGitHubProfile(for user: User)
-	func didTapGetFollowers(for user: User)
+	func didRequestFollowers(for username: String)
 }
 
 class UserInfoController: UIViewController {
 
-	let headerView = UIView()
-	let itemViewOne = UIView()
-	let itemViewTwo = UIView()
-	let dateLabel = SFSBodyLabel(textAlign: .center)
+	private let contentView = UIView()
+	private let scrollView = UIScrollView()
 	
+	private let dateLabel = SFSBodyLabel(textAlign: .center)
+	private let headerView = UIView()
+	private let itemViewOne = UIView()
+	private let itemViewTwo = UIView()
 	private var itemViews: [UIView] = []
 	
 	var username: String!
-	weak var delegate: FollowerListController!
+	weak var delegate: UserInfoControllerDelegate!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,14 +59,8 @@ class UserInfoController: UIViewController {
 	}
 	
 	func configureUIElements(with user: User) {
-		let repoItemVC = RepoItemController(user: user)
-		repoItemVC.delegate = self
-		
-		let followerItemVC = FollowerItemController(user: user)
-		followerItemVC.delegate = self
-		
-		self.add(childVC: repoItemVC, to: self.itemViewOne)
-		self.add(childVC: followerItemVC, to: self.itemViewTwo)
+		self.add(childVC: RepoItemController(user: user, delegate: self), to: self.itemViewOne)
+		self.add(childVC: FollowerItemController(user: user, delegate: self), to: self.itemViewTwo)
 		self.add(childVC: UserInfoHeaderController(user: user), to: self.headerView)
 
 		self.dateLabel.text = "GitHub since \(user.createdAt.convertToMonthYearFormat())"
@@ -75,23 +70,32 @@ class UserInfoController: UIViewController {
 		let padding: CGFloat = 20
 		let itemHeight: CGFloat = 140
 		
+		view.addSubviews(scrollView)
+		scrollView.addSubview(contentView)
+		
+		scrollView.pinToEdges(of: view)
+		contentView.pinToEdges(of: scrollView)
+		
+		
 		itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
 		
 		for itemView in itemViews {
 			
-			view.addSubview(itemView)
+			contentView.addSubview(itemView)
 			itemView.translatesAutoresizingMaskIntoConstraints = false
 			
 			NSLayoutConstraint.activate([
-				itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-				itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+				itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+				itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 			])
-			
 		}
 		
 		NSLayoutConstraint.activate([
-			headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			headerView.heightAnchor.constraint(equalToConstant: 180),
+			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+			contentView.heightAnchor.constraint(equalToConstant: 600),
+			
+			headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+			headerView.heightAnchor.constraint(equalToConstant: 210),
 			
 			itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
 			itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
@@ -100,7 +104,7 @@ class UserInfoController: UIViewController {
 			itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
 			
 			dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: 20),
-			dateLabel.heightAnchor.constraint(equalToConstant: 18)
+			dateLabel.heightAnchor.constraint(equalToConstant: 50)
 		])
 	}
 	
@@ -116,23 +120,25 @@ class UserInfoController: UIViewController {
 	}
 }
 
-extension UserInfoController: UserInfoControllerDelegate {
-	func didTapGitHubProfile(for user: User) {
-		guard let url = URL(string: user.htmlUrl) else {
-			presentSFSAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid", buttonTitle: "Ok")
-			return
-		}
-		
-		presentSafariVC(with: url)
-	}
-	
+extension UserInfoController: FollowerItemControllerDelegate {
 	func didTapGetFollowers(for user: User) {
 		guard user.followers != 0 else {
 			presentSFSAlertOnMainThread(title: "No Followers", message: "This user has no followers", buttonTitle: "Ok")
 			return
 		}
-		
+
 		delegate.didRequestFollowers(for: user.login)
 		dismissVC()
+	}
+}
+
+extension UserInfoController: RepoItemControllerDelegate {
+	func didTapGitHubProfile(for user: User) {
+		guard let url = URL(string: user.htmlUrl) else {
+			presentSFSAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid", buttonTitle: "Ok")
+			return
+		}
+
+		presentSafariVC(with: url)
 	}
 }

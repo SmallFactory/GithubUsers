@@ -21,16 +21,17 @@ class SFSTextField: UITextField {
 	
 	private func configure() {
 		translatesAutoresizingMaskIntoConstraints = false
+		
 		layer.borderColor = UIColor.systemGray4.cgColor
 		layer.borderWidth = 2
 		layer.cornerRadius = 10
 		
+		adjustsFontSizeToFitWidth = true
+		font = UIFont.preferredFont(forTextStyle: .title2)
+		minimumFontSize = 12
+		textAlignment = .center
 		textColor = .label
 		tintColor = .label
-		textAlignment = .center
-		font = UIFont.preferredFont(forTextStyle: .title2)
-		adjustsFontSizeToFitWidth = true
-		minimumFontSize = 12
 		
 		autocorrectionType = .no
 		backgroundColor = .tertiarySystemBackground
@@ -38,9 +39,5 @@ class SFSTextField: UITextField {
 		returnKeyType = .go
 		
 		placeholder = "Enter a username"
-		
-		#if DEBUG
-			text = "sallen0400"
-		#endif
 	}
 }
