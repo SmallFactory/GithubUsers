@@ -53,14 +53,10 @@ class SearchController: UIViewController {
 	}
 	
 	private func compose() {
-		view.addSubview(logoImageView)
+		view.addSubviews(logoImageView, usernameTextField, callToActionButton)
 		logoImageView.translatesAutoresizingMaskIntoConstraints = false
 		logoImageView.image = Images.ghLogo
-		
-		view.addSubview(usernameTextField)
 		usernameTextField.delegate = self
-		
-		view.addSubview(callToActionButton)
 		callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
 	}
 	

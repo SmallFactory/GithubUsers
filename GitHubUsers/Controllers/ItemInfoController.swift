@@ -16,7 +16,6 @@ class ItemInfoController: UIViewController {
 	private let stackView = UIStackView()
 	
 	var user: User!
-	weak var delegate: UserInfoControllerDelegate!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +37,7 @@ class ItemInfoController: UIViewController {
 		view.layer.cornerRadius = 18
 		view.backgroundColor = .secondarySystemBackground
 		
-		view.addSubview(stackView)
-		view.addSubview(actionButton)
+		view.addSubviews(stackView, actionButton)
 		
 		actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
 		

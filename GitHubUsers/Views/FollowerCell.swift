@@ -26,8 +26,7 @@ class FollowerCell: UICollectionViewCell {
 	}
 	
 	private func compose() {
-		contentView.addSubview(avatarImageView)
-		contentView.addSubview(usernameLabel)
+		contentView.addSubviews(avatarImageView, usernameLabel)
 	}
 	
 	func set(follower: Follower) {

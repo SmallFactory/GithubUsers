@@ -43,10 +43,7 @@ class SFSAlertController: UIViewController {
 	private func compose() {
 		view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
 		view.addSubview(containerView)
-		
-		containerView.addSubview(titleLabel)
-		containerView.addSubview(actionButton)
-		containerView.addSubview(messageLabel)
+		containerView.addSubviews(titleLabel, actionButton, messageLabel)
 		
 		titleLabel.text = alertTitle ?? "Something went wrong"
 		actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)

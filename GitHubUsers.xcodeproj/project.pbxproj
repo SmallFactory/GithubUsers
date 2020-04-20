@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2660C79D244CEF5E009ECAC9 /* DataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2660C79C244CEF5E009ECAC9 /* DataLoadingController.swift */; };
+		2660C79F244D123A009ECAC9 /* UIVIew+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2660C79E244D123A009ECAC9 /* UIVIew+Ext.swift */; };
 		267CA4BA244BDF99007AB8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 267CA4B9244BDF99007AB8A0 /* Assets.xcassets */; };
 		267CA4BD244BDF99007AB8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 267CA4BB244BDF99007AB8A0 /* LaunchScreen.storyboard */; };
 		267CA4C8244BDF99007AB8A0 /* GitHubUsersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CA4C7244BDF99007AB8A0 /* GitHubUsersTests.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		2660C79C244CEF5E009ECAC9 /* DataLoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingController.swift; sourceTree = "<group>"; };
+		2660C79E244D123A009ECAC9 /* UIVIew+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Ext.swift"; sourceTree = "<group>"; };
 		267CA4AD244BDF96007AB8A0 /* GitHubUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267CA4B9244BDF99007AB8A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		267CA4BC244BDF99007AB8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				267CA4F1244BE201007AB8A0 /* Date+Ext.swift */,
 				267CA4F2244BE201007AB8A0 /* String+Ext.swift */,
 				267CA4F0244BE201007AB8A0 /* UIViewController+Ext.swift */,
+				2660C79E244D123A009ECAC9 /* UIVIew+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				267CA4EC244BE1C5007AB8A0 /* FollowerItemController.swift in Sources */,
 				267CA50B244BE447007AB8A0 /* FollowerCell.swift in Sources */,
 				267CA4F9244BE3D2007AB8A0 /* NetworkManager.swift in Sources */,
+				2660C79F244D123A009ECAC9 /* UIVIew+Ext.swift in Sources */,
 				267CA4E3244BE190007AB8A0 /* FavoritesController.swift in Sources */,
 				267CA4E9244BE1C5007AB8A0 /* SearchController.swift in Sources */,
 				267CA50C244BE447007AB8A0 /* FavoriteCell.swift in Sources */,

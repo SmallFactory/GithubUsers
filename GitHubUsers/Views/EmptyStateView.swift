@@ -29,8 +29,7 @@ class EmptyStateView: UIView {
 	}
 	
 	private func compose() {
-		addSubview(messageLabel)
-		addSubview(logoImageView)
+		addSubviews(messageLabel, logoImageView)
 		
 		messageLabel.numberOfLines = 3
 		messageLabel.textColor = .secondaryLabel
