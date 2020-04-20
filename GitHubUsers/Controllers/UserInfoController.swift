@@ -14,11 +14,13 @@ protocol UserInfoControllerDelegate: class {
 
 class UserInfoController: UIViewController {
 
-	let headerView = UIView()
-	let itemViewOne = UIView()
-	let itemViewTwo = UIView()
-	let dateLabel = SFSBodyLabel(textAlign: .center)
+	private let contentView = UIView()
+	private let scrollView = UIScrollView()
 	
+	private let dateLabel = SFSBodyLabel(textAlign: .center)
+	private let headerView = UIView()
+	private let itemViewOne = UIView()
+	private let itemViewTwo = UIView()
 	private var itemViews: [UIView] = []
 	
 	var username: String!
@@ -68,22 +70,31 @@ class UserInfoController: UIViewController {
 		let padding: CGFloat = 20
 		let itemHeight: CGFloat = 140
 		
+		view.addSubviews(scrollView)
+		scrollView.addSubview(contentView)
+		
+		scrollView.pinToEdges(of: view)
+		contentView.pinToEdges(of: scrollView)
+		
+		
 		itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
 		
 		for itemView in itemViews {
 			
-			view.addSubview(itemView)
+			contentView.addSubview(itemView)
 			itemView.translatesAutoresizingMaskIntoConstraints = false
 			
 			NSLayoutConstraint.activate([
-				itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-				itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+				itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+				itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 			])
-			
 		}
 		
 		NSLayoutConstraint.activate([
-			headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+			contentView.heightAnchor.constraint(equalToConstant: 600),
+			
+			headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
 			headerView.heightAnchor.constraint(equalToConstant: 210),
 			
 			itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
